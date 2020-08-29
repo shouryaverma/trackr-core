@@ -11,4 +11,5 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	go.uber.org/zap v1.15.0
 	golang.org/x/crypto v0.0.0-20200728195943-123391ffb6de
+	gopkg.in/go-playground/assert.v1 v1.2.1
 )
