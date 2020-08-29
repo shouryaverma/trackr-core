@@ -15,7 +15,7 @@ jobs:
           TEST_DB_PORT: 5432
           TEST_DB_TYPE: postgres
 
-    working_directory: /go/src/github.com/amaraliou/trackr-v2
+    working_directory: /go/src/github.com/amaraliou/trackr-core
     steps:
       - checkout
       - run: 
