@@ -3,7 +3,7 @@ package mock
 import (
 	"errors"
 
-	"github.com/amaraliou/trackr-v2/internal/model"
+	"github.com/amaraliou/trackr-core/internal/model"
 )
 
 // CreateUser ...

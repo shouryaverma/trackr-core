@@ -1,10 +1,12 @@
+// +build integration
+
 package postgres
 
 import (
 	"log"
 	"testing"
 
-	"github.com/amaraliou/trackr-v2/internal/model"
+	"github.com/amaraliou/trackr-core/internal/model"
 	uuid "github.com/satori/go.uuid"
 	"gopkg.in/go-playground/assert.v1"
 )

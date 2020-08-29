@@ -1,4 +1,4 @@
-module github.com/amaraliou/trackr-v2
+module github.com/amaraliou/trackr-core
 
 go 1.13
 

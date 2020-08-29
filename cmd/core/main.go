@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/amaraliou/trackr-v2/internal/server"
+	"github.com/amaraliou/trackr-core/internal/server"
 	"github.com/joho/godotenv"
 )
 

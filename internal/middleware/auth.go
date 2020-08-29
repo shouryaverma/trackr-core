@@ -3,8 +3,8 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/amaraliou/trackr-v2/internal/auth"
-	"github.com/amaraliou/trackr-v2/internal/response"
+	"github.com/amaraliou/trackr-core/internal/auth"
+	"github.com/amaraliou/trackr-core/internal/response"
 )
 
 // SetAuth ...

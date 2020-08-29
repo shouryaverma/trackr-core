@@ -1,8 +1,8 @@
 package server
 
 import (
-	"github.com/amaraliou/trackr-v2/internal/handler"
-	trackrMiddleware "github.com/amaraliou/trackr-v2/internal/middleware"
+	"github.com/amaraliou/trackr-core/internal/handler"
+	trackrMiddleware "github.com/amaraliou/trackr-core/internal/middleware"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/cors"

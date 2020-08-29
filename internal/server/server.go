@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/amaraliou/trackr-v2/internal/handler"
-	"github.com/amaraliou/trackr-v2/internal/storage/postgres"
-	"github.com/amaraliou/trackr-v2/pkg/logger"
+	"github.com/amaraliou/trackr-core/internal/handler"
+	"github.com/amaraliou/trackr-core/internal/storage/postgres"
+	"github.com/amaraliou/trackr-core/pkg/logger"
 	"github.com/go-chi/chi"
 	"github.com/joho/godotenv"
 )

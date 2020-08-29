@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/amaraliou/trackr-v2/internal/model"
-	"github.com/amaraliou/trackr-v2/pkg/logger"
+	"github.com/amaraliou/trackr-core/internal/model"
+	"github.com/amaraliou/trackr-core/pkg/logger"
 	"github.com/jinzhu/gorm"
 
 	_ "github.com/jinzhu/gorm/dialects/postgres"

@@ -1,3 +1,5 @@
+// +build !integration
+
 package handler
 
 import (
@@ -5,8 +7,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/amaraliou/trackr-v2/internal/storage/mock"
-	"github.com/amaraliou/trackr-v2/pkg/logger"
+	"github.com/amaraliou/trackr-core/internal/storage/mock"
+	"github.com/amaraliou/trackr-core/pkg/logger"
 )
 
 var handler *Handler

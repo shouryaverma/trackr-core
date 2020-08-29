@@ -1,6 +1,6 @@
 package storage
 
-import "github.com/amaraliou/trackr-v2/internal/model"
+import "github.com/amaraliou/trackr-core/internal/model"
 
 // PostgresInterface ...
 type PostgresInterface interface {

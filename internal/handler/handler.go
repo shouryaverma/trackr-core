@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"github.com/amaraliou/trackr-v2/internal/storage"
-	"github.com/amaraliou/trackr-v2/pkg/logger"
+	"github.com/amaraliou/trackr-core/internal/storage"
+	"github.com/amaraliou/trackr-core/pkg/logger"
 )
 
 // Handler ...

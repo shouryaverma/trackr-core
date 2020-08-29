@@ -5,10 +5,10 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/amaraliou/trackr-v2/internal/auth"
-	"github.com/amaraliou/trackr-v2/internal/model"
-	"github.com/amaraliou/trackr-v2/internal/response"
-	"github.com/amaraliou/trackr-v2/pkg/logger"
+	"github.com/amaraliou/trackr-core/internal/auth"
+	"github.com/amaraliou/trackr-core/internal/model"
+	"github.com/amaraliou/trackr-core/internal/response"
+	"github.com/amaraliou/trackr-core/pkg/logger"
 	"golang.org/x/crypto/bcrypt"
 )
 

@@ -1,3 +1,5 @@
+// +build integration
+
 package postgres
 
 import (
@@ -6,8 +8,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/amaraliou/trackr-v2/internal/model"
-	"github.com/amaraliou/trackr-v2/pkg/logger"
+	"github.com/amaraliou/trackr-core/internal/model"
+	"github.com/amaraliou/trackr-core/pkg/logger"
 	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"
 )

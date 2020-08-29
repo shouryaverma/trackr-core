@@ -1,3 +1,5 @@
+// +build !integration
+
 package handler
 
 import (
@@ -8,8 +10,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/amaraliou/trackr-v2/internal/model"
-	"github.com/amaraliou/trackr-v2/internal/storage/mock"
+	"github.com/amaraliou/trackr-core/internal/model"
+	"github.com/amaraliou/trackr-core/internal/storage/mock"
 	"github.com/gorilla/mux"
 	uuid "github.com/satori/go.uuid"
 	"gopkg.in/go-playground/assert.v1"
