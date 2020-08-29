@@ -1,0 +1,44 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.13.5
+      - image: circleci/postgres:11
+        environment:
+          POSTGRES_DB: trackr_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          TEST_DB_USER: postgres
+          TEST_DB_PASS: postgres
+          TEST_DB_NAME: trackr_test
+          TEST_DB_HOST: localhost
+          TEST_DB_PORT: 5432
+          TEST_DB_TYPE: postgres
+
+    working_directory: /go/src/github.com/amaraliou/trackr-v2
+    steps:
+      - checkout
+      - run: 
+          name: Prepare Postgres client
+          command: |
+            sudo apt-get update --fix-missing
+            sudo apt install postgresql-client
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Prepare Postgres extensions
+          command: psql -p 5432 -h localhost -U postgres -d trackr_test -c 'create extension if not exists "uuid-ossp"' #&& psql -p 5432 -h localhost -U postgres -c 'create extension if not exists "uuid-ossp"'
+      - run: 
+          name: Install dependencies
+          command: go mod download
+      - run:
+          name: Run Unit Test
+          environment:
+            TEST_DB_USER: postgres
+            TEST_DB_PASS: postgres
+            TEST_DB_NAME: trackr_test
+            TEST_DB_HOST: localhost
+            TEST_DB_PORT: 5432
+            TEST_DB_TYPE: postgres
+          command: go test ./... -coverpkg=./...
