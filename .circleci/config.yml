@@ -33,7 +33,10 @@ jobs:
           name: Install dependencies
           command: go mod download
       - run:
-          name: Run Unit Test
+          name: Run Unit Tests
+          command: go test ./...
+      - run:
+          name: Run Integration Tests
           environment:
             TEST_DB_USER: postgres
             TEST_DB_PASS: postgres
@@ -41,4 +44,4 @@ jobs:
             TEST_DB_HOST: localhost
             TEST_DB_PORT: 5432
             TEST_DB_TYPE: postgres
-          command: go test ./... -coverpkg=./...
+          command: go test -v -tags=integration ./... 
