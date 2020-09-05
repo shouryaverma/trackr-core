@@ -70,12 +70,17 @@ func refreshEverything() error {
 
 	db := pgRepo.postgres.DB
 
-	err := db.DropTableIfExists(&model.User{}).Error
+	err := db.DropTableIfExists(&model.Application{}, &model.User{}).Error
 	if err != nil {
 		return err
 	}
 
-	err = db.AutoMigrate(&model.User{}).Error
+	err = db.AutoMigrate(&model.User{}, &model.Application{}).Error
+	if err != nil {
+		return err
+	}
+
+	err = db.Model(&model.Application{}).AddForeignKey("user_id", "users(id)", "CASCADE", "CASCADE").Error
 	if err != nil {
 		return err
 	}
