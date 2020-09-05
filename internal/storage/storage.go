@@ -10,4 +10,10 @@ type PostgresInterface interface {
 	UpdateUser(model.User, string) (*model.User, error)
 	DeleteUser(string) (int64, error)
 	AllUsers() (*[]model.User, error)
+
+	CreateApplication(model.Application) (*model.Application, error)
+	GetApplication(string) (*model.Application, error)
+	UpdateApplication(model.Application, string) (*model.Application, error)
+	DeleteApplication(string) (int64, error)
+	AllApplications() (*[]model.Application, error)
 }
