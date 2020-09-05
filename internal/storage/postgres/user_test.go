@@ -11,7 +11,7 @@ import (
 	"gopkg.in/go-playground/assert.v1"
 )
 
-func TestGetAllUsers(t *testing.T) {
+func TestAllUsers(t *testing.T) {
 
 	err := refreshEverything()
 	if err != nil {

@@ -34,7 +34,18 @@ func (repo *Repository) CreateApplication(application model.Application) (*model
 
 // AllApplications ...
 func (repo *Repository) AllApplications() (*[]model.Application, error) {
-	return &[]model.Application{}, nil
+
+	db := repo.postgres.DB
+	logger := repo.postgres.logger
+	applications := []model.Application{}
+
+	err := db.Model(&model.Application{}).Limit(100).Find(&applications).Error
+	if err != nil {
+		logger.Warnf("Failed to retrieve applications in Postgres: %s", err.Error())
+		return &[]model.Application{}, err
+	}
+
+	return &applications, nil
 }
 
 // GetApplication ...

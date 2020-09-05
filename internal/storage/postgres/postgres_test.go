@@ -88,7 +88,7 @@ func refreshEverything() error {
 	return nil
 }
 
-// Users seeders
+// User seeders
 func seedOneUser() (*model.User, error) {
 
 	db := pgRepo.postgres.DB
@@ -135,4 +135,40 @@ func seedUsers() (*[]model.User, error) {
 	}
 
 	return &users, nil
+}
+
+// Application seeders
+func seedOneApplication() (*model.Application, error) {
+	return &model.Application{}, nil
+}
+
+func seedApplications() (*[]model.Application, error) {
+
+	db := pgRepo.postgres.DB
+
+	users, err := seedUsers()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var applications = []model.Application{
+		{
+			JobTitle: "Software Engineer Intern",
+			Company:  "GoCardless",
+		},
+		{
+			JobTitle: "Software Engineer Intern",
+			Company:  "Skyscanner",
+		},
+	}
+
+	for i := range applications {
+		applications[i].UserID = (*users)[i].ID
+		err = db.Model(&model.Application{}).Create(&applications[i]).Error
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	return &applications, nil
 }
