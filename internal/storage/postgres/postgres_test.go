@@ -139,7 +139,26 @@ func seedUsers() (*[]model.User, error) {
 
 // Application seeders
 func seedOneApplication() (*model.Application, error) {
-	return &model.Application{}, nil
+
+	db := pgRepo.postgres.DB
+
+	user, err := seedOneUser()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var application = model.Application{
+		JobTitle: "Software Engineer Intern",
+		Company:  "GoCardless",
+		UserID:   user.ID,
+	}
+
+	err = db.Model(&model.Application{}).Create(&application).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return &application, nil
 }
 
 func seedApplications() (*[]model.Application, error) {

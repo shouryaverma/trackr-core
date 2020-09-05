@@ -30,6 +30,27 @@ func TestAllApplications(t *testing.T) {
 	assert.Equal(t, len(*applications), len(*retrievedApplications))
 }
 
+func TestGetApplication(t *testing.T) {
+
+	err := refreshEverything()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	application, err := seedOneApplication()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	retrievedApplication, err := pgRepo.GetApplication(application.ID.String())
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	assert.Equal(t, application.JobTitle, retrievedApplication.JobTitle)
+	assert.Equal(t, application.Company, retrievedApplication.Company)
+}
+
 func TestCreateApplication(t *testing.T) {
 
 	err := refreshEverything()
