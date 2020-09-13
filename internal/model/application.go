@@ -25,16 +25,16 @@ type Application struct {
 func (application *Application) Validate(action string) error {
 	switch strings.ToLower(action) {
 	case "create":
-		if application.UserID.String() == "00000000-0000-0000-0000-000000000000" {
-			return errors.New("Required Applicant")
-		}
-
 		if application.JobTitle == "" {
 			return errors.New("Required Job Title")
 		}
 
 		if application.Company == "" {
 			return errors.New("Required Company")
+		}
+
+		if application.UserID.String() == "00000000-0000-0000-0000-000000000000" {
+			return errors.New("Required User ID")
 		}
 
 		return nil
