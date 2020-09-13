@@ -77,10 +77,35 @@ func (repo *Repository) GetApplication(id string) (*model.Application, error) {
 
 // UpdateApplication ...
 func (repo *Repository) UpdateApplication(application model.Application, id string) (*model.Application, error) {
-	return &model.Application{}, nil
+
+	db := repo.postgres.DB
+	logger := repo.postgres.logger
+
+	err := db.Model(model.Application{}).Updates(&application).Error
+	if err != nil {
+		logger.Infof("Failed to update the application in Postgres")
+		return &model.Application{}, err
+	}
+
+	return repo.GetApplication(id)
 }
 
 // DeleteApplication ...
 func (repo *Repository) DeleteApplication(id string) (int64, error) {
-	return int64(1), nil
+
+	db := repo.postgres.DB
+	logger := repo.postgres.logger
+
+	db = db.Unscoped().Model(&model.Application{}).Where("id = ?", id).Take(&model.Application{}).Delete(&model.Application{})
+	if gorm.IsRecordNotFoundError(db.Error) {
+		logger.Infof("Failed to get the application from Postgres")
+		return 0, errors.New("Application not found")
+	}
+
+	if db.Error != nil {
+		logger.Infof("Failed to delete the application from Postgres")
+		return 0, db.Error
+	}
+
+	return db.RowsAffected, nil
 }

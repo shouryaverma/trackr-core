@@ -76,3 +76,47 @@ func TestCreateApplication(t *testing.T) {
 
 	assert.Equal(t, newApplication.JobTitle, createdApplication.JobTitle)
 }
+
+func TestUpdateApplication(t *testing.T) {
+
+	err := refreshEverything()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	application, err := seedOneApplication()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	applicationUpdate := model.Application{
+		Location: "London, UK",
+	}
+
+	updatedApplication, err := pgRepo.UpdateApplication(applicationUpdate, application.ID.String())
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	assert.Equal(t, updatedApplication.Location, applicationUpdate.Location)
+}
+
+func TestDeleteApplication(t *testing.T) {
+
+	err := refreshEverything()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	application, err := seedOneApplication()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	isDeleted, err := pgRepo.DeleteApplication(application.ID.String())
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	assert.Equal(t, isDeleted, int64(1))
+}
